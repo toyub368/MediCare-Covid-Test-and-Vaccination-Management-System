@@ -78,7 +78,7 @@ if ($_POST) {
 
 // Get all vaccination bookings for this hospital
 $db->query("SELECT vb.*, p.full_name as patient_name, p.phone as patient_phone, p.email as patient_email,
-            p.date_of_birth, p.gender, p.aadhar_number, p.address, p.city, p.state, p.pincode
+            p.date_of_birth, p.gender, p.cnic, p.address, p.city, p.state, p.pincode
             FROM vaccination_bookings vb 
             JOIN patients p ON vb.patient_id = p.id 
             WHERE vb.hospital_id = :hospital_id 
@@ -260,7 +260,7 @@ if (isset($_GET['export']) && $_GET['export'] === 'excel') {
                                                 data-patient-email="<?= htmlspecialchars($booking['patient_email']) ?>"
                                                 data-patient-dob="<?= $booking['date_of_birth'] ?>"
                                                 data-patient-gender="<?= $booking['gender'] ?>"
-                                                data-patient-aadhar="<?= $booking['aadhar_number'] ?>"
+                                                data-patient-cnic="<?= $booking['cnic'] ?>"
                                                 data-patient-address="<?= htmlspecialchars($booking['address']) ?>"
                                                 data-patient-city="<?= htmlspecialchars($booking['city']) ?>"
                                                 data-patient-state="<?= htmlspecialchars($booking['state']) ?>"
@@ -431,7 +431,7 @@ if (isset($_GET['export']) && $_GET['export'] === 'excel') {
                 patientName: row.getAttribute('data-patient-name'),
                 patientDOB: row.getAttribute('data-patient-dob'),
                 patientGender: row.getAttribute('data-patient-gender'),
-                patientAadhar: row.getAttribute('data-patient-aadhar'),
+                patientCnic: row.getAttribute('data-patient-cnic'),
                 vaccineName: row.getAttribute('data-vaccine-name'),
                 doseNumber: row.getAttribute('data-dose-number'),
                 certificate: row.getAttribute('data-certificate'),
@@ -466,8 +466,8 @@ if (isset($_GET['export']) && $_GET['export'] === 'excel') {
                                 <td>${age} years, ${data.patientGender.charAt(0).toUpperCase() + data.patientGender.slice(1)}</td>
                             </tr>
                             <tr>
-                                <th>Aadhar Number</th>
-                                <td>${data.patientAadhar || 'N/A'}</td>
+                                <th>CNIC</th>
+                                <td>${data.patientCnic || 'N/A'}</td>
                             </tr>
                             <tr>
                                 <th>Certificate ID</th>
@@ -522,7 +522,7 @@ if (isset($_GET['export']) && $_GET['export'] === 'excel') {
                 patientEmail: row.getAttribute('data-patient-email'),
                 patientDOB: row.getAttribute('data-patient-dob'),
                 patientGender: row.getAttribute('data-patient-gender'),
-                patientAadhar: row.getAttribute('data-patient-aadhar'),
+                patientCnic: row.getAttribute('data-patient-cnic'),
                 patientAddress: row.getAttribute('data-patient-address'),
                 patientCity: row.getAttribute('data-patient-city'),
                 patientState: row.getAttribute('data-patient-state'),
@@ -564,8 +564,8 @@ if (isset($_GET['export']) && $_GET['export'] === 'excel') {
                             <div class="detail-value">${data.patientName}</div>
                         </div>
                         <div class="detail-item">
-                            <div class="detail-label">Aadhar Number:</div>
-                            <div class="detail-value">${data.patientAadhar || 'N/A'}</div>
+                            <div class="detail-label">CNIC:</div>
+                            <div class="detail-value">${data.patientCnic || 'N/A'}</div>
                         </div>
                         <div class="detail-item">
                             <div class="detail-label">Age & Gender:</div>

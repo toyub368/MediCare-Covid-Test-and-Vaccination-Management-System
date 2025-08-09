@@ -1,7 +1,10 @@
 <?php
+
 require_once '../includes/session.php';
 require_once '../includes/functions.php';
 requireLogin('patient');
+
+
 
 $db = new Database();
 $patient_id = $_SESSION['user_id'];
@@ -136,13 +139,13 @@ $hospitals = $db->resultset();
                                             <select class="form-select" name="test_type" required>
                                                 <option value="">Select test type</option>
                                                 <option value="RT-PCR" <?php echo ($_POST['test_type'] ?? '') === 'RT-PCR' ? 'selected' : ''; ?>>
-                                                    RT-PCR Test (₹500) - Most accurate
+                                                    RT-PCR Test (PKR 500) - Most accurate
                                                 </option>
                                                 <option value="Rapid Antigen" <?php echo ($_POST['test_type'] ?? '') === 'Rapid Antigen' ? 'selected' : ''; ?>>
-                                                    Rapid Antigen Test (₹300) - Quick results
+                                                    Rapid Antigen Test ( PKR 300) - Quick results
                                                 </option>
                                                 <option value="Antibody" <?php echo ($_POST['test_type'] ?? '') === 'Antibody' ? 'selected' : ''; ?>>
-                                                    Antibody Test (₹400) - Check immunity
+                                                    Antibody Test (PKR 400) - Check immunity
                                                 </option>
                                             </select>
                                         </div>

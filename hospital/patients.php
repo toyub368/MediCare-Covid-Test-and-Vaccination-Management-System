@@ -130,7 +130,7 @@ if (isset($_GET['export']) && $_GET['export'] === 'excel') {
                                                             </div>
                                                             <div class="ms-2">
                                                                 <strong><?php echo htmlspecialchars($patient['full_name']); ?></strong><br>
-                                                                <small class="text-muted">ID: <?php echo $patient['aadhar_number']; ?></small>
+                                                                <small class="text-muted">ID: <?php echo $patient['cnic']; ?></small>
                                                             </div>
                                                         </div>
                                                     </td>

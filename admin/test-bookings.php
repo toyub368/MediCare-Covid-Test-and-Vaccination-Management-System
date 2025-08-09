@@ -168,7 +168,7 @@ function formatBookingTime($timeString) {
                                                         <?php endif; ?>
                                                     <?php endif; ?>
                                                 </td>
-                                                <td class="align-middle">₹<?php echo number_format($booking['price'], 2); ?></td>
+                                                <td class="align-middle">PKR <?php echo number_format($booking['price'], 2); ?></td>
                                                 <td class="align-middle"><?php echo formatDate($booking['created_at']); ?></td>
                                                 <td class="align-middle">
                                                     <div class="btn-group" role="group">
@@ -286,7 +286,7 @@ function formatBookingTime($timeString) {
                             <tr><td><strong>Status:</strong></td><td><span class="badge ${statusBadge}">${booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}</span></td></tr>
                             <tr><td><strong>Test Type:</strong></td><td>${booking.test_type}</td></tr>
                             <tr><td><strong>Date:</strong></td><td>${booking.booking_date} at ${formatTime(booking.booking_time)}</td></tr>
-                            <tr><td><strong>Price:</strong></td><td>₹${parseFloat(booking.price).toFixed(2)}</td></tr>
+                            <tr><td><strong>Price:</strong></td><td>PKR${parseFloat(booking.price).toFixed(2)}</td></tr>
                             <tr><td><strong>Booked On:</strong></td><td>${booking.created_at}</td></tr>
                         </table>
                     </div>

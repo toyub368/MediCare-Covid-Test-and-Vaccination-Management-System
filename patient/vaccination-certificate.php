@@ -1,4 +1,5 @@
 <?php
+
 require_once '../includes/session.php';
 require_once '../includes/functions.php';
 requireLogin('patient');
@@ -88,7 +89,7 @@ $patient_info = $db->single();
                                                             <div class="bg-light rounded p-3">
                                                                 <i class="fas fa-user-check fa-3x text-success mb-2"></i>
                                                                 <h5 class="mb-0"><?php echo htmlspecialchars($patient_info['full_name']); ?></h5>
-                                                                <small class="text-muted">Aadhar: <?php echo htmlspecialchars($patient_info['aadhar_number']); ?></small>
+                                                                <small class="text-muted">CNIC: <?php echo htmlspecialchars($patient_info['cnic']); ?></small>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -263,7 +264,7 @@ $patient_info = $db->single();
                             <div class="col-12">
                                 <h4 class="mb-3">This is to certify that</h4>
                                 <h2 class="text-primary mb-2">${patient.full_name}</h2>
-                                <p class="text-muted">Aadhar No: ${patient.aadhar_number}</p>
+                                <p class="text-muted">CNIC No: ${patient.cnic}</p>
                             </div>
                         </div>
                         

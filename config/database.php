@@ -10,11 +10,13 @@ class Database {
     private $user = DB_USER;
     private $pass = DB_PASS;
     private $dbname = DB_NAME;
-    private $dbh;
-    private $error;
+
+    private $dbh;   // Database handler
+    private $error; // Store error message
+    private $stmt;  // Store statement
 
     public function __construct() {
-        $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
+        $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname . ';charset=utf8mb4';
         $options = array(
             PDO::ATTR_PERSISTENT => true,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
@@ -22,8 +24,9 @@ class Database {
 
         try {
             $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
-        } catch(PDOException $e) {
+        } catch (PDOException $e) {
             $this->error = $e->getMessage();
+            die("Database Connection Failed: " . $this->error);
         }
     }
 

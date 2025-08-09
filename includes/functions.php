@@ -71,5 +71,8 @@ function exportToExcel($data, $filename) {
     }
     echo '</table>';
     exit();
+
+    
 }
+
 ?>

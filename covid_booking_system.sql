@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 30, 2025 at 05:08 PM
+-- Generation Time: Aug 03, 2025 at 09:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,7 +41,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `email`, `password`, `full_name`, `created_at`) VALUES
-(1, 'admin', 'admin@covidbook.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'System Administrator', '2025-07-21 04:11:02');
+(1, 'admin', 'admin@covidbook.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'System Administrator', '2025-08-03 11:04:01');
 
 -- --------------------------------------------------------
 
@@ -63,26 +63,20 @@ CREATE TABLE `hospitals` (
   `status` enum('pending','approved','rejected') DEFAULT 'pending',
   `test_available` tinyint(1) DEFAULT 1,
   `vaccine_available` tinyint(1) DEFAULT 1,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `specialties` text DEFAULT NULL,
-  `description` text DEFAULT NULL,
-  `contact_person` varchar(255) DEFAULT NULL,
-  `website` varchar(255) DEFAULT NULL,
-  `established_year` int(11) DEFAULT NULL,
-  `bed_capacity` int(11) DEFAULT NULL,
-  `emergency_services` tinyint(1) DEFAULT 0,
-  `ambulance_services` tinyint(1) DEFAULT 0,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `hospitals`
 --
 
-INSERT INTO `hospitals` (`id`, `hospital_name`, `email`, `password`, `phone`, `address`, `city`, `state`, `pincode`, `license_number`, `status`, `test_available`, `vaccine_available`, `created_at`, `specialties`, `description`, `contact_person`, `website`, `established_year`, `bed_capacity`, `emergency_services`, `ambulance_services`, `updated_at`) VALUES
-(2, 'Metro Medical Center', 'metro@hospital.com', '$2y$10$mNWRBkLOJkAuPSGj.tB28uFHGaXYue0iRZ6K0o/qhCn2uxzzlpGAC', '9876543211', '456 Park Avenue', 'Peshawar', 'abc', '110001', 'LIC002', 'approved', 1, 1, '2025-07-21 04:11:02', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL),
-(3, 'Apollo Health Care', 'apollo@hospital.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '9876543212', '789 Health Street', 'Quetta', 'abc', '560001', 'LIC003', 'approved', 1, 1, '2025-07-21 04:11:02', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL),
-(4, 'Liaquat National', 'liaquat@national.com', '$2y$10$74wK8hd8L.11g9O8.5OPcOnSIJy5OXpDbHJzRYavepEiey18hn8gW', '9123455614', 'abc', 'abc', 'abc', '1223', 'LCO34', 'approved', 1, 1, '2025-07-29 02:50:54', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL);
+INSERT INTO `hospitals` (`id`, `hospital_name`, `email`, `password`, `phone`, `address`, `city`, `state`, `pincode`, `license_number`, `status`, `test_available`, `vaccine_available`, `created_at`) VALUES
+(1, 'Aga Khan University Hospital', 'akuu@karachi.com', '$2y$10$S7xC98sLW0nymx5Z9FgHeOkm1IY4arrlEPwaes4Ntlg7kt/LKYWUW', '021111111111', 'Stadium Road', 'Karachi', 'Sindh', '74800', 'PAK-LIC-001', 'approved', 1, 1, '2025-08-03 11:04:01'),
+(2, 'Jinnah Postgraduate Medical Centre', 'jpmc@karachi.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '02199212600', 'Rafiqui Shaheed Road', 'Karachi', 'Sindh', '75510', 'PAK-LIC-002', 'approved', 1, 1, '2025-08-03 11:04:01'),
+(3, 'Liaquat National Hospital', 'lnh@karachi.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '021111222333', 'National Stadium Rd', 'Karachi', 'Sindh', '74800', 'PAK-LIC-003', 'approved', 1, 1, '2025-08-03 11:04:01'),
+(4, 'Shaukat Khanum Memorial Hospital', 'skmh@lahore.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '04235905000', '7A Block R3', 'Lahore', 'Punjab', '54000', 'PAK-LIC-004', 'approved', 1, 1, '2025-08-03 11:04:01'),
+(5, 'Pakistan Institute of Medical Sciences', 'pims@isb.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '0519261170', 'Sector G-8/3', 'Islamabad', 'Federal', '44000', 'PAK-LIC-005', 'approved', 1, 1, '2025-08-03 11:04:01'),
+(6, 'Civil Hospital', 'civil@quetta.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '0812840381', 'Mezan Chowk', 'Quetta', 'Balochistan', '87300', 'PAK-LIC-006', 'approved', 1, 1, '2025-08-03 11:04:01');
 
 -- --------------------------------------------------------
 
@@ -102,7 +96,7 @@ CREATE TABLE `patients` (
   `city` varchar(100) NOT NULL,
   `state` varchar(100) NOT NULL,
   `pincode` varchar(10) NOT NULL,
-  `aadhar_number` varchar(12) NOT NULL,
+  `cnic` varchar(15) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -110,10 +104,14 @@ CREATE TABLE `patients` (
 -- Dumping data for table `patients`
 --
 
-INSERT INTO `patients` (`id`, `full_name`, `email`, `password`, `phone`, `date_of_birth`, `gender`, `address`, `city`, `state`, `pincode`, `aadhar_number`, `created_at`) VALUES
-(2, 'Jane Smith', 'jane@patient.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '9876543213', '1985-05-15', 'female', '456 Pine Avenue', 'Delhi', 'Delhi', '110002', '123456789013', '2025-07-21 04:11:02'),
-(3, 'talha', 'toyub345@gmail.com', '$2y$10$FbNXkLbDj2xRtFqbLFujnegNEuswAnkBzGk0U2CMxpUqA7.lIPYbe', '9123455612', '2025-07-23', 'male', 'naval', 'karachi', 'abc', '1223', '112222333333', '2025-07-22 04:34:35'),
-(4, 'hamza', 'hamza@gmail.com', '$2y$10$NpgMUFw0rw5RKjwu.LhGIuqVYFx9y/sn92caoa43Q33Z9SupvefMq', '9134567891', '2025-07-10', 'male', 'abc', 'abc', 'abc', '123', '1289493493', '2025-07-22 23:38:10');
+INSERT INTO `patients` (`id`, `full_name`, `email`, `password`, `phone`, `date_of_birth`, `gender`, `address`, `city`, `state`, `pincode`, `cnic`, `created_at`) VALUES
+(8, 'Ayesha', 'ayesha@gmail.com', '$2y$10$CrCFgajxBeXZOkmybULedOeZOTdSnwZdNg7I4ufcbnA7rQkda.FAq', '03268193702', '2006-03-15', 'female', 'North Nazimabad', 'Karachi', 'abc', '123456', '4220107083451', '2025-08-03 14:36:52'),
+(9, 'Mehak', 'mehak@gmail.com', '$2y$10$XG6qNUwQxub/7KwpTbKEc.bml6m6xhvT5qs6uvUJFwYEAlUt1Z/T.', '03166441752', '2006-07-12', 'female', 'North Nazimabad', 'Karachi', 'abc', '123456', '4220107086405', '2025-08-03 14:40:39'),
+(12, 'Sheeza', 'sheeza@gmail.com', '$2y$10$WeKcO1Hq1vuLFybXR74nQuo0pK612ezZueki3f1g6uG4dbIzz0Fiy', '03171056981', '2005-07-28', 'female', 'Clifton', 'Karachi', 'abc', '123456', '4220107083467', '2025-08-03 14:47:38'),
+(13, 'Bilal Khan', 'bilal@gmail.com', '$2y$10$o2l9LEeQ2nx8Eeb.otJFreuwoIFlKJlRqWg56Eb0brB7j4gsMarem', '03172948371', '1998-11-26', 'male', 'Gulshan e Johar', 'Karachi', 'abc', '123456', '4220107086390', '2025-08-03 14:52:42'),
+(14, 'Hamza', 'hamza@gmail.com', '$2y$10$O0t1u56ZvLkxYSackoxx5.2Id6PZ7hrUnJlDUv5vYKjpNVhBs8Zby', '03402689325', '2001-07-30', 'male', 'DHA', 'Karachi', 'abc', '123456', '4220107086276', '2025-08-03 16:01:40'),
+(15, 'Mahateer', 'mahateer@gmail.com', '$2y$10$EtKrOHcuA9Opr.kvmx5BH.jdVAcDd8bDZk4AJjMTU/odSVF2Wr3uy', '03287042781', '1992-11-03', 'male', 'Lyari', 'Karachi', 'abc', '123456', '4220107086890', '2025-08-03 16:05:43'),
+(16, 'Muhammad Talha', 'toyub368@gmail.com', '$2y$10$bEFsfE8HvELAgjZd5ZkIPOaXraGOkZvVRshQj9/HQXxIJAyBmBTLy', '03171046981', '2006-09-05', 'male', 'Naval Colony', '', 'abc', '123456', '4220107086201', '2025-08-03 19:09:39');
 
 -- --------------------------------------------------------
 
@@ -140,12 +138,13 @@ CREATE TABLE `test_bookings` (
 --
 
 INSERT INTO `test_bookings` (`id`, `patient_id`, `hospital_id`, `test_type`, `booking_date`, `booking_time`, `status`, `test_result`, `result_date`, `price`, `created_at`) VALUES
-(2, 2, 2, 'Rapid Antigen', '2024-01-16', '14:00:00', 'completed', 'positive', '2025-07-23', 300.00, '2025-07-21 04:11:02'),
-(3, 3, 3, 'RT-PCR', '2025-07-23', '10:00:00', 'pending', 'pending', NULL, 500.00, '2025-07-22 04:35:34'),
-(4, 3, 2, 'Antibody', '2025-07-23', '11:00:00', 'rejected', 'pending', NULL, 400.00, '2025-07-22 04:36:40'),
-(5, 3, 3, 'Antibody', '2025-07-24', '14:00:00', 'pending', 'pending', NULL, 400.00, '2025-07-22 04:37:05'),
-(6, 4, 2, 'Antibody', '2025-07-24', '17:00:00', 'completed', 'positive', '2025-07-23', 400.00, '2025-07-22 23:38:48'),
-(9, 4, 4, 'Antibody', '2025-07-31', '14:00:00', 'completed', 'positive', '2025-07-29', 400.00, '2025-07-29 02:53:03');
+(20, 8, 1, 'Rapid Antigen', '2025-08-03', '14:00:00', 'completed', 'positive', '2025-08-03', 300.00, '2025-08-03 14:37:23'),
+(21, 9, 6, 'Rapid Antigen', '2025-08-04', '14:00:00', 'completed', 'negative', '2025-08-03', 300.00, '2025-08-03 14:41:38'),
+(22, 12, 2, 'Rapid Antigen', '2025-08-19', '15:00:00', 'completed', 'positive', '2025-08-03', 300.00, '2025-08-03 14:48:11'),
+(23, 13, 3, 'Antibody', '2025-08-31', '14:00:00', 'completed', 'positive', '2025-08-03', 400.00, '2025-08-03 14:55:15'),
+(24, 14, 5, 'Antibody', '2025-08-12', '14:00:00', 'completed', 'negative', '2025-08-03', 400.00, '2025-08-03 16:02:15'),
+(25, 15, 4, 'Rapid Antigen', '2025-08-25', '10:00:00', 'completed', 'positive', '2025-08-03', 300.00, '2025-08-03 16:07:02'),
+(26, 16, 1, 'Antibody', '2025-08-20', '12:00:00', 'completed', 'negative', '2025-08-03', 400.00, '2025-08-03 19:10:39');
 
 -- --------------------------------------------------------
 
@@ -172,10 +171,14 @@ CREATE TABLE `vaccination_bookings` (
 --
 
 INSERT INTO `vaccination_bookings` (`id`, `patient_id`, `hospital_id`, `vaccine_name`, `dose_number`, `booking_date`, `booking_time`, `status`, `vaccination_date`, `certificate_number`, `created_at`) VALUES
-(2, 2, 2, 'Covaxin', '1', '2024-01-12', '15:00:00', 'completed', '2025-07-21', 'CERT2025221726', '2025-07-21 04:11:02'),
-(3, 4, 2, 'Sputnik V', '2', '2025-07-24', '17:00:00', 'completed', '2025-07-23', 'CERT2025817554', '2025-07-22 23:39:07'),
-(5, 4, 3, 'Covaxin', '2', '2025-07-30', '14:00:00', 'completed', '2025-07-29', 'CERT2025205194', '2025-07-29 01:56:08'),
-(6, 4, 4, 'Sputnik V', '1', '2025-07-31', '16:00:00', 'completed', '2025-07-29', 'CERT2025655270', '2025-07-29 02:55:43');
+(20, 8, 1, 'Sinopharm', '2', '2025-08-03', '14:00:00', 'completed', '2025-08-03', 'CERT2025250066', '2025-08-03 14:37:39'),
+(21, 9, 6, 'Sinopharm', 'booster', '2025-08-10', '14:00:00', 'completed', '2025-08-03', 'CERT2025948257', '2025-08-03 14:41:53'),
+(22, 9, 6, 'Sinopharm', '2', '2025-08-05', '16:00:00', 'completed', '2025-08-03', 'CERT2025214515', '2025-08-03 14:42:16'),
+(23, 12, 2, 'Sinovac', '2', '2025-08-12', '11:00:00', 'completed', '2025-08-03', 'CERT2025283136', '2025-08-03 14:48:30'),
+(24, 13, 3, 'Sputnik V', 'booster', '2025-08-30', '16:00:00', 'completed', '2025-08-03', 'CERT2025453887', '2025-08-03 14:53:30'),
+(25, 14, 5, 'Novavax', 'booster', '2025-09-15', '15:00:00', 'completed', '2025-08-03', 'CERT2025398672', '2025-08-03 16:02:36'),
+(26, 15, 4, 'Covishield', '1', '2025-10-06', '09:00:00', 'completed', '2025-08-03', 'CERT2025859286', '2025-08-03 16:07:19'),
+(27, 16, 1, 'Sinopharm', '2', '2025-08-18', '10:00:00', 'completed', '2025-08-03', 'CERT2025354653', '2025-08-03 19:10:59');
 
 -- --------------------------------------------------------
 
@@ -197,12 +200,18 @@ CREATE TABLE `vaccine_inventory` (
 --
 
 INSERT INTO `vaccine_inventory` (`id`, `hospital_id`, `vaccine_name`, `available_doses`, `price`, `updated_at`) VALUES
-(3, 2, 'Covishield', 150, 250.00, '2025-07-21 04:11:02'),
-(4, 2, 'Sputnik V', 49, 400.00, '2025-07-22 23:40:39'),
-(5, 3, 'Covaxin', 120, 500.00, '2025-07-30 13:49:44'),
-(6, 3, 'Covishield', 200, 250.00, '2025-07-21 04:11:02'),
-(7, 4, 'Sputnik V', 22, 300.00, '2025-07-29 02:58:14'),
-(8, 3, 'Covishield', 12, 400.00, '2025-07-30 13:42:38');
+(1, 1, 'Pfizer', 200, 2500.00, '2025-08-03 16:45:46'),
+(2, 1, 'Sinopharm', 149, 1800.00, '2025-08-03 19:13:25'),
+(3, 2, 'Sinovac', 179, 2000.00, '2025-08-03 14:49:52'),
+(4, 2, 'Cansino', 120, 2200.00, '2025-08-03 11:04:01'),
+(5, 3, 'AstraZeneca', 170, 2800.00, '2025-08-03 11:04:01'),
+(6, 3, 'Sputnik V', 89, 3200.00, '2025-08-03 14:57:26'),
+(7, 4, 'Moderna', 140, 3500.00, '2025-08-03 11:04:01'),
+(8, 4, 'Covishield', 99, 2800.00, '2025-08-03 16:08:28'),
+(9, 5, 'Novavax', 159, 3000.00, '2025-08-03 16:03:43'),
+(10, 5, 'Johnson & Johnson', 130, 3200.00, '2025-08-03 11:04:01'),
+(11, 6, 'Sinopharm', 109, 1800.00, '2025-08-03 14:43:53'),
+(12, 6, 'Pfizer', 85, 2500.00, '2025-08-03 11:04:01');
 
 --
 -- Indexes for dumped tables
@@ -230,7 +239,7 @@ ALTER TABLE `hospitals`
 ALTER TABLE `patients`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `aadhar_number` (`aadhar_number`);
+  ADD UNIQUE KEY `cnic` (`cnic`);
 
 --
 -- Indexes for table `test_bookings`
@@ -269,31 +278,31 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `hospitals`
 --
 ALTER TABLE `hospitals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `test_bookings`
 --
 ALTER TABLE `test_bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `vaccination_bookings`
 --
 ALTER TABLE `vaccination_bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `vaccine_inventory`
 --
 ALTER TABLE `vaccine_inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables

@@ -1,4 +1,5 @@
 <?php
+
 require_once '../includes/session.php';
 require_once '../includes/functions.php';
 requireLogin('patient');
@@ -231,7 +232,7 @@ $vaccination_bookings = $db->resultset();
                                                             <?php endif; ?>
                                                         <?php endif; ?>
                                                     </td>
-                                                    <td>₹<?php echo number_format($booking['price'] ?? 0, 2); ?></td>
+                                                    <td>PKR <?php echo number_format($booking['price'] ?? 0, 2); ?></td>
                                                     <td><?php echo formatDate($booking['created_at']); ?></td>
                                                     <td>
                                                         <div class="btn-group" role="group">

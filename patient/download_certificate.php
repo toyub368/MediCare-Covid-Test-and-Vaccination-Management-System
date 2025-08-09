@@ -1,7 +1,10 @@
 <?php
+
 require_once '../includes/session.php';
 require_once '../includes/functions.php';
 requireLogin('patient');
+
+
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("Invalid request");

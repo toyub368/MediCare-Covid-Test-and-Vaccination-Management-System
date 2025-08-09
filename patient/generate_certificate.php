@@ -1,7 +1,10 @@
 <?php
+
 require_once '../includes/session.php';
 require_once '../includes/functions.php';
 requireLogin('patient');
+
+
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("Invalid certificate ID.");
@@ -11,7 +14,7 @@ $booking_id = $_GET['id'];
 $patient_id = $_SESSION['user_id'];
 
 $db = new Database();
-$db->query("SELECT vb.*, h.hospital_name, h.address, h.phone, p.full_name, p.aadhar_number
+$db->query("SELECT vb.*, h.hospital_name, h.address, h.phone, p.full_name, p.cnic
             FROM vaccination_bookings vb
             JOIN hospitals h ON vb.hospital_id = h.id
             JOIN patients p ON vb.patient_id = p.id
@@ -30,11 +33,13 @@ if (!$certificate) {
     <meta charset="UTF-8">
     <title>COVID-19 Vaccination Certificate</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
             background-color: #f8f9fa;
             padding: 30px;
+            position: relative;
         }
         .certificate-container {
             background: white;
@@ -43,6 +48,7 @@ if (!$certificate) {
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
             max-width: 800px;
             margin: auto;
+            position: relative;
         }
         .certificate-title {
             color: #28a745;
@@ -50,6 +56,7 @@ if (!$certificate) {
             font-weight: 700;
             text-align: center;
             margin-bottom: 20px;
+            margin-top: 15px;
         }
         .certificate-sub {
             text-align: center;
@@ -73,6 +80,12 @@ if (!$certificate) {
             font-style: italic;
             color: #28a745;
         }
+        .action-buttons {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 10;
+        }
 
         @media print {
             body {
@@ -82,12 +95,30 @@ if (!$certificate) {
                 box-shadow: none;
                 margin: 0;
                 border: none;
+                padding: 30px 20px;
+            }
+            .no-print {
+                display: none;
+            }
+            .certificate-title {
+                margin-top: 0;
             }
         }
     </style>
 </head>
-<body onload="window.print()">
+<body>
     <div class="certificate-container">
+        <div class="action-buttons no-print">
+            <div class="btn-group">
+                <a href="vaccination-certificate.php" class="btn btn-sm btn-outline-secondary" title="Back to History">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <button onclick="window.print()" class="btn btn-sm btn-outline-primary" title="Print Certificate">
+                    <i class="fas fa-print"></i>
+                </button>
+            </div>
+        </div>
+        
         <div class="certificate-title">
             COVID-19 VACCINATION CERTIFICATE
         </div>
@@ -101,8 +132,8 @@ if (!$certificate) {
                 <div class="info-value"><?php echo htmlspecialchars($certificate['full_name']); ?></div>
             </div>
             <div class="col-md-6">
-                <div class="info-label">Aadhar Number</div>
-                <div class="info-value"><?php echo htmlspecialchars($certificate['aadhar_number']); ?></div>
+                <div class="info-label">CNIC</div>
+                <div class="info-value"><?php echo htmlspecialchars($certificate['cnic']); ?></div>
             </div>
         </div>
 

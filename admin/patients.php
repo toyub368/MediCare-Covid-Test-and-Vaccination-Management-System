@@ -23,8 +23,8 @@ if ($_POST) {
     }
 }
 
-// Get all patients
-$db->query("SELECT * FROM patients ORDER BY created_at DESC");
+// Get all patients with CNIC instead of Aadhar
+$db->query("SELECT *, cnic AS aadhar_number FROM patients ORDER BY created_at DESC");
 $patients = $db->resultset();
 
 // Export functionality
@@ -43,7 +43,6 @@ if (isset($_GET['export']) && $_GET['export'] === 'excel') {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="../assets/css/style.css" rel="stylesheet">
     <style>
-        /* Added custom CSS for perfect centering */
         .patient-icon-container {
             display: flex;
             align-items: center;
@@ -107,7 +106,7 @@ if (isset($_GET['export']) && $_GET['export'] === 'excel') {
                                             <th>Age</th>
                                             <th>Gender</th>
                                             <th>City</th>
-                                            <th>Aadhar</th>
+                                            <th>CNIC</th> <!-- Changed from Aadhar to CNIC -->
                                             <th>Registered</th>
                                             <th>Actions</th>
                                         </tr>
@@ -118,7 +117,6 @@ if (isset($_GET['export']) && $_GET['export'] === 'excel') {
                                                 <td><?php echo $patient['id']; ?></td>
                                                 <td>
                                                     <div class="d-flex align-items-center">
-                                                        <!-- Fixed icon centering with custom CSS class -->
                                                         <div class="patient-icon-container me-2">
                                                             <i class="fas fa-user text-white"></i>
                                                         </div>
@@ -134,7 +132,7 @@ if (isset($_GET['export']) && $_GET['export'] === 'excel') {
                                                     </span>
                                                 </td>
                                                 <td><?php echo htmlspecialchars($patient['city']); ?></td>
-                                                <td><?php echo htmlspecialchars($patient['aadhar_number']); ?></td>
+                                                <td><?php echo htmlspecialchars($patient['cnic']); ?></td> <!-- Changed from aadhar_number to cnic -->
                                                 <td><?php echo formatDate($patient['created_at']); ?></td>
                                                 <td>
                                                     <div class="btn-group" role="group">
@@ -176,7 +174,6 @@ if (isset($_GET['export']) && $_GET['export'] === 'excel') {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
-        // Fixed patient view functionality
         document.querySelectorAll('.view-patient-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const patientData = JSON.parse(this.closest('tr').dataset.patient);
@@ -197,7 +194,7 @@ if (isset($_GET['export']) && $_GET['export'] === 'excel') {
                             <tr><td><strong>Date of Birth:</strong></td><td>${patient.date_of_birth}</td></tr>
                             <tr><td><strong>Age:</strong></td><td>${new Date().getFullYear() - new Date(patient.date_of_birth).getFullYear()}</td></tr>
                             <tr><td><strong>Gender:</strong></td><td>${patient.gender}</td></tr>
-                            <tr><td><strong>Aadhar:</strong></td><td>${patient.aadhar_number}</td></tr>
+                            <tr><td><strong>CNIC:</strong></td><td>${patient.cnic}</td></tr> <!-- Changed from Aadhar to CNIC -->
                         </table>
                     </div>
                     <div class="col-md-6">

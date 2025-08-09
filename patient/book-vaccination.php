@@ -1,7 +1,10 @@
 <?php
+
 require_once '../includes/session.php';
 require_once '../includes/functions.php';
 requireLogin('patient');
+
+
 
 $db = new Database();
 $patient_id = $_SESSION['user_id'];
@@ -282,7 +285,7 @@ foreach ($hospital_vaccines as $hv) {
                 vaccines.forEach(vaccine => {
                     const option = document.createElement('option');
                     option.value = vaccine.name;
-                    option.textContent = `${vaccine.name} (₹${parseFloat(vaccine.price).toFixed(2)})`;
+                    option.textContent = `${vaccine.name} (PKR ${parseFloat(vaccine.price).toFixed(2)})`;
                     vaccineSelect.appendChild(option);
                 });
             }

@@ -1,7 +1,11 @@
 <?php
+
 require_once '../includes/session.php';
 require_once '../includes/functions.php';
 requireLogin('patient');
+
+
+
 
 $db = new Database();
 $patient_id = $_SESSION['user_id'];

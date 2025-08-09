@@ -262,7 +262,7 @@ if (isset($_GET['export']) && $_GET['export'] === 'excel') {
                                                         <?php endif; ?>
                                                     <?php endif; ?>
                                                 </td>
-                                                <td>₹<?php echo number_format($booking['price'], 2); ?></td>
+                                                <td>PKR <?php echo number_format($booking['price'], 2); ?></td>
                                                 <td><?php echo formatDate($booking['created_at']); ?></td>
                                                 <td>
                                                     <div class="btn-group" role="group">
@@ -450,7 +450,7 @@ if (isset($_GET['export']) && $_GET['export'] === 'excel') {
                         </div>
                         <div class="detail-item">
                             <div class="detail-label">Price:</div>
-                            <div>₹${parseFloat(data.price).toFixed(2)}</div>
+                            <div>PKR ${parseFloat(data.price).toFixed(2)}</div>
                         </div>
                         <div class="detail-item">
                             <div class="detail-label">Requested On:</div>

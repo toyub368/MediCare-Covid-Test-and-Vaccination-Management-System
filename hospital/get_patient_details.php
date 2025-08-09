@@ -21,7 +21,7 @@ if (!$patient) {
             <i class="fas fa-user fa-3x text-white"></i>
         </div>
         <h4 class="mt-3"><?= htmlspecialchars($patient['full_name']) ?></h4>
-        <p class="text-muted">ID: <?= htmlspecialchars($patient['aadhar_number']) ?></p>
+        <p class="text-muted">ID: <?= htmlspecialchars($patient['cnic']) ?></p>
     </div>
     <div class="col-md-8">
         <div class="row">
@@ -33,7 +33,7 @@ if (!$patient) {
                     <tr><td><strong>Phone:</strong></td><td><?= htmlspecialchars($patient['phone']) ?></td></tr>
                     <tr><td><strong>Date of Birth:</strong></td><td><?= formatDate($patient['date_of_birth']) ?></td></tr>
                     <tr><td><strong>Gender:</strong></td><td><?= ucfirst($patient['gender']) ?></td></tr>
-                    <tr><td><strong>Aadhar:</strong></td><td><?= htmlspecialchars($patient['aadhar_number']) ?></td></tr>
+                    <tr><td><strong>CNIC:</strong></td><td><?= htmlspecialchars($patient['cnic']) ?></td></tr>
                 </table>
             </div>
             <div class="col-md-6">
